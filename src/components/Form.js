@@ -8,11 +8,15 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const initialValues={
   email: "",
   password: "",
+  showPassword:false,
 
 }
 
@@ -30,7 +34,7 @@ const validate=values=>{
   }
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
   if(!passwordRegex.test(values.password)){
-    errors.password=<Typography variant='body2'>Password must contain at least one <br/>uppercase letter, one lowercase letter,<br/> one digit, and be at least 8 characters long</Typography>
+    errors.password=<Typography variant='body2'>Password must contain at least one uppercase letter, one lowercase letter, one digit,one special character and be at least 8 characters long</Typography>
   }
 
 
@@ -46,16 +50,19 @@ function SignInSide() {
     onSubmit,
     validate
   });
+  const handleTogglePasswordVisibility = () => {
+    formik.setFieldValue('showPassword', !formik.values.showPassword);
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh'}} >
         <CssBaseline />
 
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square >
+        <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square >
           <Box
             sx={{
-              my: 24,
+              my: 20,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
@@ -68,14 +75,15 @@ function SignInSide() {
             <Typography component="h1" variant="body2"  >
               Sign in to continue
             </Typography>
-            <Box component="form"  onSubmit={onSubmit} sx={{ mt: 2 }} minWidth={300}>
+            <Box component="form"  onSubmit={onSubmit} sx={{ mt: 0 }}>
               <TextField
                 margin="normal"
                 id="email"
+                fullWidth
                 label={<Typography variant='body2'>Email Address*</Typography> }
                 name="email"
                 autoComplete="email"
-                size='medium'
+                size='small'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
@@ -85,16 +93,29 @@ function SignInSide() {
               {formik.touched.email && formik.errors.email?<div>{formik.errors.email}</div>:null}
               <TextField
                 margin="normal"
-                width="150"
                 name="password"
+                fullWidth
                 label={<Typography variant='body2'>Password*</Typography> }
-                type="password"
+                type={formik.values.showPassword ? 'text' : 'password'}
                 id="password"
-                size='medium'
+                size='small'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
                 autoComplete="current-password"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end" margin="dense">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleTogglePasswordVisibility}
+                        onMouseDown={(e) => e.preventDefault()}
+                      >
+                        {formik.values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <br/>
               {formik.touched.password && formik.errors.password?<div>{formik.errors.password}</div>:null}
@@ -111,6 +132,7 @@ function SignInSide() {
             </Box>
           </Box>
         </Grid>
+        <Grid item xs={2} sx={{backgroundColor:'#ffffff'}}></Grid>
         <Grid
           item
           xs={false}
