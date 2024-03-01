@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
        <Route path="/" element={<Form />} />
-       <Route path="/create" element={<Muitypography />}/>
+       <Route path="/nextpage" element={<Muitypography />}/>
       </Routes>
       
     </Router>

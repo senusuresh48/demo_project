@@ -152,7 +152,7 @@ function SignInSide() {
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
+              ml:20
             }}
           >
             <Typography component="h1" variant="h6" style={{ fontWeight: 'bold'}} >
@@ -161,7 +161,7 @@ function SignInSide() {
             <Typography component="h1" variant="body2"  >
               Sign in to continue
             </Typography>
-            <Box component="form"  onSubmit={handleSubmit} sx={{ mt: 2 }} minWidth={300}>
+            <Box component="form"  onSubmit={onSubmit} sx={{ mt: 2 }} minWidth={300}>
               <TextField
                 margin="normal"
                 id="email"
@@ -192,11 +192,11 @@ function SignInSide() {
               <br/>
               {formik.touched.password && formik.errors.password?<div>{formik.errors.password}</div>:null}
               <Button
-                type="submit"
                 variant="contained"
                 size='medium'
-                alignItems='flex'
+                href="/nextpage"
                 sx={{ mt: 5, mb: 1 ,pl:10,pr:10}}
+                disabled={!formik.isValid}
               >
                 Sign In
               </Button>
