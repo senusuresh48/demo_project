@@ -59,14 +59,15 @@ function SignInSide() {
       <Grid container component="main" sx={{ height: '100vh'}} >
         <CssBaseline />
 
-        <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square >
+        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square sx={{}} >
           <Box
             sx={{
               my: 20,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
-              ml:20
+              ml:20,
+              pr:20
             }}
           >
             <Typography component="h1" variant="h6" style={{ fontWeight: 'bold'}} >
@@ -132,11 +133,11 @@ function SignInSide() {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={2} sx={{backgroundColor:'#ffffff'}}></Grid>
+        
         <Grid
           item
           xs={false}
-          sm={4}
+          sm={3}
           md={6}
           sx={{
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
