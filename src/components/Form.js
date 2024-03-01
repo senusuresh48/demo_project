@@ -1,89 +1,3 @@
-/*import React from "react";
-import { useFormik } from "formik"; // useFormik
-import Button from '@mui/material/Button';
-import {Grid} from "@mui/material";
-import { TextField ,Container} from "@mui/material";
-
-const initialValues={
-  name: "",
-  email: "",
-}
-
-const onSubmit = values=>{
-  console.log("Form data",values)
-}
-
-const validate=values=>{
-  let errors={}
-
-  if(!values.name){
-    errors.name='Field is Required'
-  }
-  
-  if(!values.email){
-    errors.email='Field is Required'
-  }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
-      errors.email='Invaild Form Format'
-  }
-
-  return errors
-  
-}
-
-function Form() {
-
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validate
-  });
-
-  console.log("Visited Fields", formik.touched);
-  return (
-    <div>
-      <Container><Grid alignItems='center'>
-      <h1>Welcome Again</h1>
-      <h4>Sign in to Continue</h4>
-      <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <TextField
-          label ="Enter your name"
-          variant="outlined"
-          type="text"
-          id="name"
-          name="name"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.name
-          }
-        />
-        {formik.touched.name && formik.errors.name?<div>{formik.errors.name}</div>:null}
-        <label htmlFor="email">Email:</label>
-        <TextField
-          label ="Enter your email"
-          type="email"
-          id="email"
-          name="email"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-        />
-        {formik.touched.email && formik.errors.email?<div>{formik.errors.email}</div>:null}
-        <Button variant="contained" href="/nextpage" color='error'>
-             Sign In
-      </Button>
-     
-      </form>
-      </Grid>
-      
-     
-    </Container>
-    </div>
-  );
-}
-export default Form;
-*/
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -126,7 +40,7 @@ const validate=values=>{
 const defaultTheme = createTheme();
 
 function SignInSide() {
-  
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -205,9 +119,8 @@ function SignInSide() {
           sx={{
             backgroundImage: 'url(https://fastly.picsum.photos/id/48/5000/3333.jpg?hmac=y3_1VDNbhii0vM_FN6wxMlvK27vFefflbUSH06z98so)',
             backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
+            backgroundColor:'#ffffff',
+            backgroundSize: 'contain',
             backgroundPosition: 'center',
           }}
         />
