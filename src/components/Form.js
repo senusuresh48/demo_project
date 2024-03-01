@@ -28,13 +28,13 @@ const validate=values=>{
   let errors={}
 
   if(!values.email){
-    errors.email='Field is Required'
+    errors.email=<Typography variant='body2' color='error'>Field Required</Typography>
   }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
-      errors.email='Invaild Form Format'
+      errors.email=<Typography variant='body2' color='error'>Invaild Form Format</Typography>
   }
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
   if(!passwordRegex.test(values.password)){
-    errors.password=<Typography variant='body2'>Password must contain at least one uppercase letter, one lowercase letter, one digit,one special character and be at least 8 characters long</Typography>
+    errors.password=<Typography variant='body2' color='error'>Password must contain at least one uppercase letter, one lowercase letter, one digit,one special character and be at least 8 characters long</Typography>
   }
 
 
@@ -73,11 +73,13 @@ function SignInSide() {
             <Typography component="h1" variant="h6" style={{ fontWeight: 'bold'}} >
               Welcome Back
             </Typography>
-            <Typography component="h1" variant="body2"  >
+            <Typography component="h1" variant="body2" sx={{mb:3}} >
               Sign in to continue
             </Typography>
             <Box component="form"  onSubmit={onSubmit} sx={{ mt: 0 }}>
+              <Typography variant='body2' style={{fontWeight:'bold'}}>User Name</Typography>
               <TextField
+                error={formik.touched.email && Boolean(formik.errors.email) }
                 margin="normal"
                 id="email"
                 fullWidth
@@ -88,11 +90,13 @@ function SignInSide() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                autoFocus
+                
               />
               <br/>
               {formik.touched.email && formik.errors.email?<div>{formik.errors.email}</div>:null}
+              <Typography variant='body2' style={{fontWeight:'bold'}}>Password</Typography>
               <TextField
+                error={formik.touched.password && Boolean(formik.errors.password)}
                 margin="normal"
                 name="password"
                 fullWidth
@@ -122,14 +126,14 @@ function SignInSide() {
               {formik.touched.password && formik.errors.password?<div>{formik.errors.password}</div>:null}
               <Button
                 variant="contained"
+                fullWidth
                 size='medium'
                 href="/nextpage"
                 sx={{ mt: 5, mb: 1 ,pl:10,pr:10}}
-                disabled={!formik.isValid}
+                onClick={formik.handleSubmit}
               >
                 Sign In
-              </Button>
-              
+              </Button>       
             </Box>
           </Box>
         </Grid>
@@ -142,9 +146,11 @@ function SignInSide() {
           sx={{
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
-            backgroundColor:'#ffffff',
-            backgroundSize: 'contain',
+            backgroundColor: (t) =>
+            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: '75% 50%',
             backgroundPosition: 'center',
+            
           }}
         />
       </Grid>
