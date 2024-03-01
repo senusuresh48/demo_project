@@ -1,12 +1,25 @@
 import Form from './components/Form';
 import './App.css';
+import Muitypography from './components/Muitypography';
+import {BrowserRouter as Router , Routes,Route}from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <Form />
-    </div>
+    <Router>
+      <Routes>
+       <Route path="/" element={<Form />} />
+       <Route path="/nextpage" element={<Muitypography />}/>
+      </Routes>
+      
+    </Router>
+
   );
 }
 
 export default App;
+
+
+<Routes>
+  <Route path="/example" element={<Form />} />
+ 
+</Routes>
