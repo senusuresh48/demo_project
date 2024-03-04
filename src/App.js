@@ -10,7 +10,6 @@ function App() {
        <Route path="/" element={<Form />} />
        <Route path="/nextpage" element={<Muitypography />}/>
       </Routes>
-      
     </Router>
 
   );
@@ -18,8 +17,3 @@ function App() {
 
 export default App;
 
-
-<Routes>
-  <Route path="/example" element={<Form />} />
- 
-</Routes>
