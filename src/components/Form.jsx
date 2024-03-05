@@ -46,7 +46,7 @@ function SignInSide() {
   
   const handleSubmit = values=>{
    console.log("Form data",values)
-    navigate('/nextpage');
+    navigate('/newpage');
   }
 
   const formik = useFormik({
