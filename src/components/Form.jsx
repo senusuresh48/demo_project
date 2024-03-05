@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues={
   email: "",
@@ -20,9 +21,6 @@ const initialValues={
 
 }
 
-const onSubmit = values=>{
-  console.log("Form data",values)
-}
 
 const validate=values=>{
   let errors={}
@@ -44,10 +42,16 @@ const validate=values=>{
 const defaultTheme = createTheme();
 
 function SignInSide() {
+  const navigate = useNavigate();
+  
+  const handleSubmit = values=>{
+   console.log("Form data",values)
+    navigate('/nextpage');
+  }
 
   const formik = useFormik({
     initialValues,
-    onSubmit,
+    onSubmit : handleSubmit,
     validate
   });
   const handleTogglePasswordVisibility = () => {
@@ -76,7 +80,7 @@ function SignInSide() {
             <Typography component="h1" variant="body2" sx={{mb:3}} >
               Sign in to continue
             </Typography>
-            <Box component="form"  onSubmit={onSubmit} sx={{ mt: 0 }}>
+            <Box component="form" onSubmit={handleSubmit}sx={{ mt: 0 }}>
               <Typography variant='body2' style={{fontWeight:'bold'}}>User Name</Typography>
               <TextField
                 error={formik.touched.email && Boolean(formik.errors.email) }
@@ -125,10 +129,10 @@ function SignInSide() {
               <br/>
               {formik.touched.password && formik.errors.password?<div>{formik.errors.password}</div>:null}
               <Button
+                type='submit'
                 variant="contained"
                 fullWidth
                 size='medium'
-                href="/nextpage"
                 sx={{ mt: 5, mb: 1 ,pl:10,pr:10}}
                 onClick={formik.handleSubmit}
               >
