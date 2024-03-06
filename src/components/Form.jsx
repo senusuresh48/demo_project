@@ -63,7 +63,7 @@ function SignInSide() {
       <Grid container component="main" sx={{ height: '100vh'}} >
         <CssBaseline />
 
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square sx={{}} >
+        <Grid item xs={12} sm={8} md={6}  elevation={6} sx={{}} >
           <Box
             sx={{
               my: 20,
@@ -77,7 +77,7 @@ function SignInSide() {
             <Typography component="h1" variant="h6" style={{ fontWeight: 'bold'}} >
               Welcome Back
             </Typography>
-            <Typography component="h1" variant="body2" sx={{mb:3}} >
+            <Typography  variant="body2" sx={{mb:3}} >
               Sign in to continue
             </Typography>
             <Box component="form" onSubmit={handleSubmit}sx={{ mt: 0 }}>
@@ -144,14 +144,15 @@ function SignInSide() {
         
         <Grid
           item
-          xs={false}
+          xs={0}
           sm={3}
           md={6}
           sx={{
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundColor:'#e1f5fe',
+            // backgroundColor: (t) =>
+            // t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: '75% 50%',
             backgroundPosition: 'center',
             

@@ -9,6 +9,7 @@ function Apconfig() {
     fetch(url)
       .then(res => {
         if (!res.ok) {
+          
           return Error("Oh no");
         } 
         return res.json();
