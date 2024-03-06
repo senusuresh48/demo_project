@@ -4,7 +4,6 @@ import Muitypography from './components/Muitypography.jsx';
 import Parent from './components/nextpage.jsx';
 import MyApp from './components/child.jsx';
 import Login from './pages/Login/Login.jsx';
-import LoginForm from './pages/Login/components/LoginForm.jsx';
 import {BrowserRouter as Router , Routes,Route}from 'react-router-dom';
 
 function App() {

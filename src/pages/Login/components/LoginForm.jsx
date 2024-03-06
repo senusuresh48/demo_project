@@ -1,16 +1,16 @@
-import React from "react";
-import Login from "../Login";
-import { useState } from "react";
-import { Button } from "@mui/material";
+import React, { useState } from "react";
+const LoginForm = ({ senu, onButtonClick }) => {
+  const [data, setData] = useState(10);
 
-const LoginForm = ({senu}) =>{  
-    const [data,setData] = useState(10);
+  const onClick = () => {
+    onButtonClick(data);
+  };
+  return (
+    <>
+      <h1>Login Form = {senu}</h1>
+      <button onClick={onClick}>Click me</button>
+    </>
+  );
+};
 
-        return (
-            <>
-            <h1>Login Form = {senu}</h1>
-            <button>Click me</button>
-            </>
-        )
-}
 export default LoginForm;
