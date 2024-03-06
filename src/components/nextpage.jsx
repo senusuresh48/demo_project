@@ -18,7 +18,7 @@ function Apconfig() {
 
   return (
     <div className="App">
-      <h1>photos</h1>
+      <h1>Photos</h1>
       <h2>...are here</h2>
 
       {photos.map(photo => (

@@ -14,6 +14,23 @@
   }
 }
 
+.panel-light,
+.panel-dark {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.panel-light {
+  color: #222;
+  background: #fff;
+}
+
+.panel-dark {
+  color: #fff;
+  background: rgb(23, 32, 42);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
