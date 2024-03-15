@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ThemeContext = createContext(null);
 const CurrentUserContext = createContext(null);
@@ -62,6 +63,10 @@ function LoginForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const canLogin = firstName !== '' && lastName !== '';
+  const navigate=useNavigate();
+ const onClick=()=>{
+    navigate('/demo1')
+  }
   return (
     <>
       <label>
@@ -82,11 +87,7 @@ function LoginForm() {
       </label>
       <Button
         disabled={!canLogin}
-        onClick={() => {
-          setCurrentUser({
-            name: firstName + ' ' + lastName
-          });
-        }}
+        onClick={onClick}
       >
         Log in
       </Button>
@@ -109,6 +110,7 @@ function Panel({ title, children }) {
 function Button({ children, disabled, onClick }) {
   const theme = useContext(ThemeContext);
   const className = 'button-' + theme;
+  
   return (
     <button
       className={className}
