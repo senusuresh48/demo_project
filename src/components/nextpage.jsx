@@ -1,20 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect} from "react";
 
 function Apconfig() {
   const [photos, setPhotos] = useState([]);
-  const id=useRef(0)
-  const url = "https://jsonplaceholder.typicode.com/photos";
+  const url = "https://jsonplaceholder.typicode.com/photos"; 
 
   useEffect(() => {
-    fetch(url)
-      .then(res => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url);
         if (!res.ok) {
-          return Error("Oh no");
-        } 
-        return res.json();
-      })
-      .then(data => setPhotos(data));
-  });
+          throw new Error("Oh no! Fetch failed");
+        }
+        const data = await res.json();
+        setPhotos(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); 
 
   return (
     <div className="App">
@@ -22,10 +27,10 @@ function Apconfig() {
       <h2>...are here</h2>
 
       {photos.map(photo => (
-        <div key={id.current++}>{photo.title}</div>
+        <div key={photo.id}>{photo.title}</div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Apconfig
+export default Apconfig;

@@ -2,7 +2,6 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
 import { useFormik } from "formik"; // useFormik
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -13,13 +12,36 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from 'react-router-dom';
+import Ralewayttf from './fonts/Raleway-Regular.ttf';
+
 
 const initialValues={
-  email: "",
+  email: "",  
   password: "",
   showPassword:false,
 
 }
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Raleway, Arial',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family: 'Raleway';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 600;
+          src: local('Raleway'), local('Raleway-Regular'), url(${Ralewayttf}) format('truetype');
+          
+        }
+      `,
+    },
+  },
+  
+});
+
 
 
 const validate=values=>{
@@ -63,33 +85,35 @@ function SignInSide() {
       <Grid container component="main" sx={{ height: '100vh'}} >
         <CssBaseline />
 
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square sx={{}} >
+        <Grid item xs={12} sm={6} md={6}  elevation={6} sx={{}} >
           <Box
             sx={{
               my: 20,
               mx: 4,
               display: 'flex',
               flexDirection: 'column',
-              ml:20,
-              pr:20
+              fontFamily:'Raleway',
+              flexWrap:'wrap',
+              alignContent:'center'
             }}
           >
-            <Typography component="h1" variant="h6" style={{ fontWeight: 'bold'}} >
+            <Typography component="h1" variant="h5" style={{  fontFamily:'Raleway',fontWeight: 'bold'}} >
               Welcome Back
             </Typography>
-            <Typography component="h1" variant="body2" sx={{mb:3}} >
+            <Typography  variant="body1" sx={{fontFamily:'Raleway',mb:3}} >
               Sign in to continue
             </Typography>
             <Box component="form" onSubmit={handleSubmit}sx={{ mt: 0 }}>
-              <Typography variant='body2' style={{fontWeight:'bold'}}>User Name</Typography>
+              <Typography variant='body1' style={{fontFamily:'Raleway',fontWeight:'bold'}}>User Name</Typography>
               <TextField
                 error={formik.touched.email && Boolean(formik.errors.email) }
                 margin="normal"
                 id="email"
                 fullWidth
-                label={<Typography variant='body2'>Email Address*</Typography> }
+                label={<Typography variant='body2'sx={{fontFamily:'Raleway'}}>Email Address*</Typography> }
                 name="email"
                 autoComplete="email"
+                sx={{fontFamily:'Raleway'}}
                 size='small'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -98,13 +122,13 @@ function SignInSide() {
               />
               <br/>
               {formik.touched.email && formik.errors.email?<div>{formik.errors.email}</div>:null}
-              <Typography variant='body2' style={{fontWeight:'bold'}}>Password</Typography>
+              <Typography variant='body2' style={{fontFamily:'Raleway',fontWeight:'bold'}}>Password</Typography>
               <TextField
                 error={formik.touched.password && Boolean(formik.errors.password)}
                 margin="normal"
                 name="password"
                 fullWidth
-                label={<Typography variant='body2'>Password*</Typography> }
+                label={<Typography sx={{fontFamily:'Raleway',}}variant='body2'>Password*</Typography> }
                 type={formik.values.showPassword ? 'text' : 'password'}
                 id="password"
                 size='small'
@@ -133,7 +157,7 @@ function SignInSide() {
                 variant="contained"
                 fullWidth
                 size='medium'
-                sx={{ mt: 5, mb: 1 ,pl:10,pr:10}}
+                sx={{ fontFamily:'Raleway',mt: 5, mb: 1 ,pl:10,pr:10}}
                 onClick={formik.handleSubmit}
               >
                 Sign In
@@ -144,14 +168,17 @@ function SignInSide() {
         
         <Grid
           item
-          xs={false}
-          sm={3}
+          xs={0}
+          sm={6}
           md={6}
           sx={{
+            flexWrap:'wrap',
+            
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundColor:'#e1f5fe',
+            // backgroundColor: (t) =>
+            // t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: '75% 50%',
             backgroundPosition: 'center',
             
