@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/demo-project/static/css/main.e20da88e.css",
-    "main.js": "/demo-project/static/js/main.4e8ef048.js",
-    "static/js/453.179ed268.chunk.js": "/demo-project/static/js/453.179ed268.chunk.js",
-    "static/media/Raleway-Regular.ttf": "/demo-project/static/media/Raleway-Regular.c15b0bf7b86f34335251.ttf",
-    "index.html": "/demo-project/index.html",
-    "main.e20da88e.css.map": "/demo-project/static/css/main.e20da88e.css.map",
-    "main.4e8ef048.js.map": "/demo-project/static/js/main.4e8ef048.js.map",
-    "453.179ed268.chunk.js.map": "/demo-project/static/js/453.179ed268.chunk.js.map"
+    "main.css": "/demo_project/static/css/main.e20da88e.css",
+    "main.js": "/demo_project/static/js/main.fe0b136d.js",
+    "static/js/453.179ed268.chunk.js": "/demo_project/static/js/453.179ed268.chunk.js",
+    "static/media/Raleway-Regular.ttf": "/demo_project/static/media/Raleway-Regular.c15b0bf7b86f34335251.ttf",
+    "index.html": "/demo_project/index.html",
+    "main.e20da88e.css.map": "/demo_project/static/css/main.e20da88e.css.map",
+    "main.fe0b136d.js.map": "/demo_project/static/js/main.fe0b136d.js.map",
+    "453.179ed268.chunk.js.map": "/demo_project/static/js/453.179ed268.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e20da88e.css",
-    "static/js/main.4e8ef048.js"
+    "static/js/main.fe0b136d.js"
   ]
 }
