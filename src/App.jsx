@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/demo-project" Component={Form} />
+        <Route exact path="/" Component={Form} />
         <Route path="/nextpage" Component={Muitypography} />
         <Route path="/newpage" Component={Parent} />
         <Route path="/page" Component={MyApp} />
